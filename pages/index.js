@@ -1,9 +1,17 @@
 import Head from "next/head";
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
 import ActionTabs from "../component/ActionTabs";
 import WelcomeContainer from "../src/WelcomeContainer";
+import fetchMoviesAction from "../store/actions/fetchMovies";
+import selectFetchMovies from "../store/selectors/fetchMovies";
 
 export default function Home({ router }) {
-  console.log(router);
+  const { fetchMovies } = fetchMoviesAction();
+  const { movies } = useSelector(selectFetchMovies);
+  useEffect(() => {
+    fetchMovies();
+  }, [fetchMovies]);
 
   return (
     <>
@@ -15,6 +23,11 @@ export default function Home({ router }) {
       <main>
         <ActionTabs router={router} />
         <WelcomeContainer />
+        <div>
+          {movies?.map((movie) => (
+            <h1 key={movie.imdbID}>{JSON.stringify(movie)}</h1>
+          ))}
+        </div>
       </main>
     </>
   );
