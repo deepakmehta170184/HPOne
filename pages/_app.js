@@ -2,12 +2,15 @@ import React from "react";
 import PropTypes from "prop-types";
 import Head from "next/head";
 import { withRouter } from "next/router";
+import { useSelector } from "react-redux";
 
 import { ThemeProvider } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import theme from "../src/theme";
 import Header from "../component/Header";
 import "../styles/main.scss";
+import Footer from "../component/Footer";
+import { wrapper } from "../store/store";
 
 const MyApp = ({ Component, pageProps, router }) => {
   React.useEffect(() => {
@@ -30,6 +33,7 @@ const MyApp = ({ Component, pageProps, router }) => {
         <CssBaseline />
         <Header />
         <Component router={router} {...pageProps} />
+        <Footer />
       </ThemeProvider>
     </div>
   );
@@ -40,4 +44,4 @@ MyApp.propTypes = {
   pageProps: PropTypes.object.isRequired,
 };
 
-export default withRouter(MyApp);
+export default wrapper.withRedux(withRouter(MyApp));

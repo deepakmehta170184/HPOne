@@ -35,3 +35,15 @@ a {
     opacity: 1;
     background-color: cadetblue;
 }
+
+.footerComponent {
+    box-shadow: 0 -1px 4px 0 rgba(0, 0, 0, 0.14);
+    padding: 4px 0;
+    margin-top: 40px;
+    width: 100%;
+
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+}
