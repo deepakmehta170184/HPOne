@@ -10,7 +10,6 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.grey[800],
     color: theme.palette.common.white,
     marginBottom: theme.spacing(4),
-    
     backgroundImage: "url(/assets/images/HeroBackground.jpg)",
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",

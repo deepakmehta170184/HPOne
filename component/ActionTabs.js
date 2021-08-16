@@ -7,7 +7,7 @@ const useStyles = makeStyles((theme) => ({
     position: "relative",
     backgroundColor: theme.palette.grey[800],
     color: theme.palette.common.white,
-    marginBottom: theme.spacing(4),
+    marginBottom: theme.spacing(1),
     backgroundImage: "url(/assets/images/HeroBackground.jpg)",
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
@@ -33,15 +33,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function ActionTabs( {router}) {
+export default function ActionTabs({ router, setOption }) {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
-    if(newValue===3){
-      router.push("https://www.google.com/")
-    }
+    setOption(newValue);
   };
 
   return (

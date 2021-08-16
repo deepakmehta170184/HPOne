@@ -1,6 +1,8 @@
 import Head from "next/head";
-import { useEffect } from "react";
+import Image from "next/image";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import loader from "../public/assets/gifs/loader.gif";
 import ActionTabs from "../component/ActionTabs";
 import WelcomeContainer from "../src/WelcomeContainer";
 import fetchMoviesAction from "../store/actions/fetchMovies";
@@ -8,10 +10,12 @@ import selectFetchMovies from "../store/selectors/fetchMovies";
 
 export default function Home({ router }) {
   const { fetchMovies } = fetchMoviesAction();
-  const { movies } = useSelector(selectFetchMovies);
+  const { movies, isLoadingMovies } = useSelector(selectFetchMovies);
+  const [option, setOption] = useState(0);
+  const options = ["Action", "Drama", "Sci-Fi", "Horror"];
   useEffect(() => {
-    fetchMovies();
-  }, [fetchMovies]);
+    fetchMovies(options[option]);
+  }, [fetchMovies, option]);
 
   return (
     <>
@@ -21,8 +25,14 @@ export default function Home({ router }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <ActionTabs router={router} />
-        <WelcomeContainer />
+        <ActionTabs router={router} setOption={setOption} />
+
+        {isLoadingMovies && (
+          <div className="loaderComponent">
+            <Image src={loader} alt="loader" />
+          </div>
+        )}
+        {!isLoadingMovies && <WelcomeContainer />}
         <div>
           {movies?.map((movie) => (
             <h1 key={movie.imdbID}>{JSON.stringify(movie)}</h1>
