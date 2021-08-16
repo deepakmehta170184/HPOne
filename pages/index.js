@@ -1,4 +1,3 @@
-import { Container } from "@material-ui/core";
 import Head from "next/head";
 import ActionTabs from "../component/ActionTabs";
 import WelcomeContainer from "../src/WelcomeContainer";

@@ -1,11 +1,6 @@
 import { Container, Paper, Tab, Tabs } from "@material-ui/core";
 import React from "react";
-
 import { makeStyles } from "@material-ui/core/styles";
-
-import Typography from "@material-ui/core/Typography";
-import Grid from "@material-ui/core/Grid";
-import Link from "@material-ui/core/Link";
 
 const useStyles = makeStyles((theme) => ({
   mainFeaturedPost: {
@@ -58,7 +53,6 @@ export default function ActionTabs() {
           textColor="inherit"
         >
           <Tab className={classes.tabs} label="Action (45)" />
-
           <Tab className={classes.tabs} label="Drama (58)" />
           <Tab className={classes.tabs} label="Sci-Fi (98)" />
           <Tab className={classes.tabs} label="Horror  (50)" />
