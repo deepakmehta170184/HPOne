@@ -2,7 +2,9 @@ import Head from "next/head";
 import ActionTabs from "../component/ActionTabs";
 import WelcomeContainer from "../src/WelcomeContainer";
 
-export default function Home() {
+export default function Home({ router }) {
+  console.log(router);
+
   return (
     <>
       <Head>
@@ -11,7 +13,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <ActionTabs />
+        <ActionTabs router={router} />
         <WelcomeContainer />
       </main>
     </>

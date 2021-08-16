@@ -1,15 +1,15 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Head from "next/head";
+import { withRouter } from "next/router";
+
 import { ThemeProvider } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import theme from "../src/theme";
 import Header from "../component/Header";
 import "../styles/main.scss";
 
-export default function MyApp(props) {
-  const { Component, pageProps } = props;
-
+const MyApp = ({ Component, pageProps, router }) => {
   React.useEffect(() => {
     const jssStyles = document.querySelector("#jss-server-side");
     if (jssStyles) {
@@ -29,13 +29,15 @@ export default function MyApp(props) {
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <Header />
-        <Component {...pageProps} />
+        <Component router={router} {...pageProps} />
       </ThemeProvider>
     </div>
   );
-}
+};
 
 MyApp.propTypes = {
   Component: PropTypes.elementType.isRequired,
   pageProps: PropTypes.object.isRequired,
 };
+
+export default withRouter(MyApp);
