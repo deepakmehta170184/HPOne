@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { alpha, makeStyles } from "@material-ui/core/styles";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -7,6 +7,7 @@ import SearchIcon from "@material-ui/icons/Search";
 import Typography from "@material-ui/core/Typography";
 import Link from "@material-ui/core/Link";
 import { ButtonGroup, InputBase } from "@material-ui/core";
+import fetchMoviesAction from "../store/actions/fetchMovies";
 
 const useStyles = makeStyles((theme) => ({
   toolbar: {
@@ -64,6 +65,8 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Header() {
   const classes = useStyles();
+  const { fetchMovies } = fetchMoviesAction();
+  const [searchValue, setSearchValue] = useState("");
   const sections = [
     { title: "Action", url: "#" },
     { title: "Adventure", url: "#" },
@@ -78,12 +81,12 @@ export default function Header() {
   ];
 
   const handleChange = ({ target: { value } }) => {
-    console.log(value);
+    setSearchValue(value);
   };
 
   const handleSubmit = ({ keyCode }) => {
     if (keyCode === 13) {
-      console.log("Enter Clicked");
+      fetchMovies(searchValue);
     }
   };
 
