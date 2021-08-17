@@ -14,9 +14,9 @@ function* fetchMovies({ payload }) {
         type: FETCH_DEFAULT_MOVIES_FULFILLED,
         payload: { movies: data.Search, count: data.totalResults },
       });
-    } else yield put({ type: FETCH_DEFAULT_MOVIES_REJECTED, payload: "error" });
+    } else yield put({ type: FETCH_DEFAULT_MOVIES_REJECTED });
   } catch (error) {
-    yield put({ type: FETCH_DEFAULT_MOVIES_REJECTED, payload: "error" });
+    yield put({ type: FETCH_DEFAULT_MOVIES_REJECTED });
   }
 }
 

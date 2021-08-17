@@ -40,7 +40,7 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         isLoadingMovies: false,
-        errors: payload,
+        errors: "error",
       };
 
     default:
